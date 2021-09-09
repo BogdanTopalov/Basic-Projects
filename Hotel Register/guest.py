@@ -6,7 +6,7 @@ class Guest:
         self.full_name = full_name
         self.age = age
 
-    # Check if the age is valid
+    # Check if the age is valid.
     @property
     def age(self):
         return self.__age
