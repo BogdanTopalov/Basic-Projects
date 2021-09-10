@@ -6,4 +6,5 @@ class Room:
         self.max_capacity = max_capacity
         self.price_per_night = price_per_night
         self.occupied = False
+        self.cleaned = True
         self.guests_info = []
