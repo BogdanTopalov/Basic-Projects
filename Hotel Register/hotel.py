@@ -86,3 +86,26 @@ class Hotel:
         self.rooms[room_number].cleaned = True
 
         return f"Room №{room_number} is now available for reservation."
+
+    def info(self):
+        hotel_info = []
+
+        # Calculate how many rooms are occupied.
+        occupied_rooms = [x for x in self.rooms.values() if x.occupied]
+        total_occupied_rooms = len(occupied_rooms)
+
+        # Calculate how many guests are currently in the hotel and their average age.
+        total_guests = 0
+        average_age = 0
+        for room in occupied_rooms:
+            total_guests += len(room.guests_info)
+            average_age += sum([guest.age for guest in room.guests_info])
+
+        average_age = average_age // total_guests
+
+        hotel_info.append(f"Hotel {self.name}")
+        hotel_info.append(f"Occupied rooms: {total_occupied_rooms} / {len(self.rooms)}")
+        hotel_info.append(f"Total guests in the hotel: {total_guests}")
+        hotel_info.append(f"Their average age is: {average_age}")
+
+        return "\n".join(hotel_info)
