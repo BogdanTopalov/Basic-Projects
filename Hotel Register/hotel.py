@@ -43,22 +43,19 @@ class Hotel:
         if wanted_room.lower() not in possible_rooms:
             return f"{self.name} doesn't offer {wanted_room} rooms."
 
-        # Check if the wanted room is available.
+        # Check if the wanted room is available
+        # and there is enough space for the guests.
         available_rooms = [
             n
             for n, room in self.rooms.items()
             if type(room).__name__ == wanted_room.lower()
+            and room.max_capacity >= len(guests)
         ]
         if not available_rooms:
             return f"There are no {wanted_room} rooms available."
 
         # Take the first available room.
         room_number = available_rooms[0]
-
-        # Check if there is enough room space for the guests.
-        room_capacity = self.rooms[room_number].max_capacity
-        if len(guests) > room_capacity:
-            return f"Too many guests! Room's maximum capacity is {room_capacity}."
 
         # Add guests into the room's info list.
         for g in guests:
