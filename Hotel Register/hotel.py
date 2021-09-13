@@ -20,6 +20,16 @@ class Hotel:
         # Store room numbers and room's class object as key:value pair.
         self.rooms = {}
 
+    @staticmethod
+    def get_occupied_rooms(rooms):
+        occupied_rooms = [r for r in rooms.values() if r.occupied]
+        return occupied_rooms
+
+    @staticmethod
+    def get_total_guests(rooms):
+        total_guests = sum([len(r.guests_info) for r in rooms if r.guests_info])
+        return total_guests
+
     def add_room(self, room_type):
 
         # Check if the hotel reached its maximum room capacity.
@@ -84,15 +94,30 @@ class Hotel:
 
         return f"Room №{room_number} is now available for reservation."
 
-    @staticmethod
-    def get_occupied_rooms(rooms):
-        occupied_rooms = [r for r in rooms.values() if r.occupied]
-        return occupied_rooms
+    def get_room_info(self, room_number):
 
-    @staticmethod
-    def get_total_guests(rooms):
-        total_guests = sum([len(r.guests_info) for r in rooms if r.guests_info])
-        return total_guests
+        # Check if room number is valid.
+        if room_number not in self.rooms:
+            return f"No room №{room_number} in the hotel."
+
+        room_info = [f"Room №{room_number}:"]
+
+        room = self.rooms[room_number]
+
+        room_info.append(f"Max capacity - {room.max_capacity}")
+        room_info.append(f"Price per night - {room.price_per_night}")
+
+        # Assign correct room boolean attributes.
+        occupied = "Occupied" if room.occupied else "Free"
+        cleaned = "Cleaned" if room.cleaned else "Not cleaned"
+
+        room_info.append(f"Status - {occupied} and {cleaned}")
+
+        # Check if "get_guest_info" method should be called.
+        if room.occupied:
+            room_info.append(room.get_guest_info())
+
+        return "\n".join(room_info)
 
     def info(self):
         hotel_info = []
