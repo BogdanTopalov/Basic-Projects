@@ -10,6 +10,7 @@ And the main class - Hotel, which has a few methods:
 #### .add_room
 #### .register_guests
 #### .free_room
+#### .get_room_info
 #### .info
 
 I tried to follow the main OOP principles and make the project as simple and useful as possible. 
