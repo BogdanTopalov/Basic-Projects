@@ -10,6 +10,11 @@ class Room:
         self.guests_info = []
 
     def get_guest_info(self):
+
+        # Check if there are any guests in the room.
+        if not self.guests_info:
+            return "There are no guests in the room."
+
         info = ["Guests in the room: "]
 
         for guest in self.guests_info:
