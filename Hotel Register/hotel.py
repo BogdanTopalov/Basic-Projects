@@ -38,8 +38,8 @@ class Hotel:
 
         # Check if the hotel reached its maximum room capacity.
         if self.rooms_capacity <= len(self.rooms):
-            return f"Hotel reached it's maximum room capacity. " \
-                   f"No more rooms can be added!"
+            return "Hotel reached it's maximum room capacity. " \
+                   "No more rooms can be added!"
 
         # Check if room_type is valid.
         if room_type.lower() not in possible_rooms:
@@ -49,6 +49,8 @@ class Hotel:
         room_number = len(self.rooms) + 1
         room = possible_rooms[room_type]
         self.rooms[room_number] = room
+
+        return f"{room_type} room has been added to the hotel."
 
     # Guests arguments are received as class objects.
     def register_guests(self, wanted_room, stay_in_nights, *guests):
