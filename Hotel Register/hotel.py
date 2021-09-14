@@ -27,7 +27,11 @@ class Hotel:
 
     @staticmethod
     def get_total_guests(rooms):
-        total_guests = sum([len(r.guests_info) for r in rooms if r.guests_info])
+        total_guests = sum([
+            len(r.guests_info)
+            for r in rooms.values()
+            if r.guests_info
+        ])
         return total_guests
 
     def add_room(self, room_type):
