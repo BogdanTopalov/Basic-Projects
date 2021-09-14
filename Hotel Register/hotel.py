@@ -47,7 +47,7 @@ class Hotel:
 
         # Initialize room class and add it to the hotel rooms.
         room_number = len(self.rooms) + 1
-        room = possible_rooms[room_type]
+        room = possible_rooms[room_type.lower()]
         self.rooms[room_number] = room
 
         return f"{room_type} room has been added to the hotel."
@@ -64,8 +64,9 @@ class Hotel:
         available_rooms = [
             n
             for n, room in self.rooms.items()
-            if type(room).__name__ == wanted_room.lower()
+            if type(room).__name__.lower() == wanted_room.lower()+"room"
             and room.max_capacity >= len(guests)
+            and not room.occupied
         ]
         if not available_rooms:
             return f"There are no {wanted_room} rooms available."
