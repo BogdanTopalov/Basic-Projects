@@ -137,7 +137,7 @@ class Hotel:
         total_guests = Hotel.get_total_guests(self.rooms)
 
         hotel_info.append(f"Hotel {self.name}")
-        hotel_info.append(f"Occupied rooms: {total_occupied_rooms} / {len(self.rooms)}")
+        hotel_info.append(f"Occupied rooms: {total_occupied_rooms}")
         hotel_info.append(f"Total guests in the hotel: {total_guests}")
 
         return "\n".join(hotel_info)
