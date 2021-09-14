@@ -111,6 +111,7 @@ class Hotel:
 
         room = self.rooms[room_number]
 
+        room_info.append(f"Type - {type(room).__name__}")
         room_info.append(f"Max capacity - {room.max_capacity}")
         room_info.append(f"Price per night - {room.price_per_night}")
 
