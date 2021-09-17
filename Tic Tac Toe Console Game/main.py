@@ -3,12 +3,6 @@ from random import randint
 player1 = {}
 player2 = {}
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-
 positions = {
     1: (0, 0),
     2: (0, 1),
@@ -85,7 +79,7 @@ def check_for_winner(board, sign):
 
     for row in range(len(board)):
         # Check for row win.
-        if matrix[row] == pattern:
+        if board[row] == pattern:
             return True
 
         # Add column symbols.
