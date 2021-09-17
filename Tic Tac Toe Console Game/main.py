@@ -1,3 +1,5 @@
+from random import randint
+
 player1 = {}
 player2 = {}
 
@@ -39,10 +41,34 @@ def setup_game():
 
     print(f"OK! Everything is set up. \n"
           f"{p1_name} you are playing with {p1_sign}.\n"
-          f"{p2_name} you are plating with {p2_sign}.\n"
-          f"LET'S START!")
+          f"{p2_name} you are plating with {p2_sign}.\n")
 
 
+def who_start_first():
+    name = player1["name"]
+    p1_choice = int(input(f"{name}, press 1 for heads or 2 for tails: "))
+
+    # Check if number is valid.
+    while p1_choice not in [0, 1]:
+        p1_choice = int(input("Invalid number! \n"
+                              "Press 1 for heads or 2 for tails"))
+
+    coin_flip = randint(1, 2)
+    result = "Heads" if coin_flip == 1 else "Tails"
+
+    # Add key:value pair to see who start first.
+    if coin_flip == p1_choice:
+        player1["start"] = True
+        player2["start"] = False
+    else:
+        name = player2["name"]
+        player1["start"] = False
+        player2["start"] = True
+
+    print(f"{result}! {name} start first!")
+
+
+# This function will be called only in the "play" function.
 def print_board(board):
     for row in board:
         # Convert the matrix numbers to strings. 
