@@ -36,3 +36,11 @@ def setup_game():
     player1["sign"] = p1_sign
     player2["name"] = p2_name
     player2["sign"] = p2_sign
+
+
+def print_board(board):
+    for row in board:
+        # Convert the matrix numbers to strings. 
+        string_numbers = [str(n) for n in row if type(n) == int]
+        print(f"|   {'   |   '.join(string_numbers)}   |")
+
