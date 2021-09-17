@@ -37,6 +37,11 @@ def setup_game():
     player2["name"] = p2_name
     player2["sign"] = p2_sign
 
+    print(f"OK! Everything is set up. \n"
+          f"{p1_name} you are playing with {p1_sign}.\n"
+          f"{p2_name} you are plating with {p2_sign}.\n"
+          f"LET'S START!")
+
 
 def print_board(board):
     for row in board:
