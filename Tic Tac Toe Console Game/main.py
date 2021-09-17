@@ -75,3 +75,34 @@ def print_board(board):
         string_numbers = [str(n) for n in row if type(n) == int]
         print(f"|   {'   |   '.join(string_numbers)}   |")
 
+
+# This function will be called only in the "play" function.
+def check_for_winner(board, sign):
+    pattern = [sign]*3
+
+    primary_diagonal = []
+    secondary_diagonal = []
+
+    for row in range(len(board)):
+        # Check for row win.
+        if matrix[row] == pattern:
+            return True
+
+        # Add column symbols.
+        column = []
+        for col in range(len(board)):
+            column.append(board[row][col])
+
+        # Check for column win.
+        if column == pattern:
+            return True
+
+        # Add diagonal symbols.
+        primary_diagonal.append(board[row][row])
+        secondary_diagonal.append(board[row][len(board) - row - 1])
+
+    # Check for diagonal win.
+    if primary_diagonal == pattern or secondary_diagonal == pattern:
+        return True
+
+
