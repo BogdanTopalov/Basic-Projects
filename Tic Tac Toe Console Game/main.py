@@ -100,3 +100,59 @@ def check_for_winner(board, sign):
         return True
 
 
+def play(p1, p2):
+    winner = False
+
+    matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+
+    # Check who should start first.
+    if p1["start"]:
+        current_player = p1
+        next_player = p2
+    else:
+        current_player = p2
+        next_player = p1
+
+    # Playing.
+    while not winner:
+        name = current_player["name"]
+
+        num = int(input(f"{name} choose a free position from 1 to 9: "))
+
+        # Check if the chosen position is valid.
+        if num not in positions:
+            print("Position out of range!")
+            continue
+
+        # Set the position.
+        row = positions[num][0]
+        col = positions[num][1]
+        position = matrix[row][col]
+
+        # Check if the chosen position is free.
+        if position in ["X", "O"]:
+            print("Position is already taken!")
+            continue
+
+        sign = current_player["sign"]
+
+        # Change the position number with the player's sign.
+        matrix[row][col] = sign
+
+        # Show the board.
+        print_board(matrix)
+
+        # Check for winner.
+        winner = check_for_winner(matrix, sign)
+
+        if winner:
+            print(f"Congratulations, {name}!\n"
+                  f"You won!")
+        else:
+            # Swap players for next turn.
+            current_player, next_player = next_player, current_player
+
