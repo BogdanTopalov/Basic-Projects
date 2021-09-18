@@ -101,7 +101,7 @@ def check_for_winner(board, sign):
 
 
 def play(p1, p2):
-    winner = False
+    turn_count = 0
 
     matrix = [
         [1, 2, 3],
@@ -118,7 +118,7 @@ def play(p1, p2):
         next_player = p1
 
     # Playing.
-    while not winner:
+    while not turn_count == 9:
         name = current_player["name"]
 
         num = int(input(f"{name} choose a free position from 1 to 9: "))
@@ -143,6 +143,9 @@ def play(p1, p2):
         # Change the position number with the player's sign.
         matrix[row][col] = sign
 
+        # Increase turn count.
+        turn_count += 1
+
         # Show the board.
         print_board(matrix)
 
@@ -157,3 +160,5 @@ def play(p1, p2):
             # Swap players for next turn.
             current_player, next_player = next_player, current_player
 
+    # This will be executed if the game is tie.
+    print("It's a tie! Nobody win.")
