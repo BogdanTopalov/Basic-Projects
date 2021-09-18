@@ -66,7 +66,7 @@ def who_start_first():
 def print_board(board):
     for row in board:
         # Convert the matrix numbers to strings. 
-        string_numbers = [str(n) for n in row if type(n) == int]
+        string_numbers = [str(n) for n in row]
         print(f"|   {'   |   '.join(string_numbers)}   |")
 
 
@@ -118,10 +118,17 @@ def play(p1, p2):
         next_player = p1
 
     # Playing.
-    while not turn_count == 9:
+    while turn_count < 10:
         name = current_player["name"]
 
-        num = int(input(f"{name} choose a free position from 1 to 9: "))
+        num = input(f"{name} choose a free position from 1 to 9: ")
+
+        # Check if input is number.
+        if not num.isnumeric():
+            print("Insert number!")
+            continue
+
+        num = int(num)
 
         # Check if the chosen position is valid.
         if num not in positions:
@@ -134,7 +141,7 @@ def play(p1, p2):
         position = matrix[row][col]
 
         # Check if the chosen position is free.
-        if position in ["X", "O"]:
+        if position == "X" or position == "O":
             print("Position is already taken!")
             continue
 
