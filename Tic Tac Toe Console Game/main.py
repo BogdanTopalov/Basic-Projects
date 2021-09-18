@@ -162,3 +162,13 @@ def play(p1, p2):
 
     # This will be executed if the game is tie.
     print("It's a tie! Nobody win.")
+
+
+def start():
+    setup_game()
+    who_start_first()
+    play(player1, player2)
+
+
+if __name__ == '__main__':
+    start()
