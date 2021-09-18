@@ -152,6 +152,7 @@ def play(p1, p2):
         if winner:
             print(f"Congratulations, {name}!\n"
                   f"You won!")
+            exit(0)
         else:
             # Swap players for next turn.
             current_player, next_player = next_player, current_player
