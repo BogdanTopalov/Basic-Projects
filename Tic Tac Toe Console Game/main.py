@@ -85,7 +85,7 @@ def check_for_winner(board, sign):
         # Add column symbols.
         column = []
         for col in range(len(board)):
-            column.append(board[row][col])
+            column.append(board[col][row])
 
         # Check for column win.
         if column == pattern:
