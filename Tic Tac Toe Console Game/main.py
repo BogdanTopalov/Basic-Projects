@@ -26,7 +26,7 @@ def setup_game():
     while p1_sign not in ["X", "O"]:
         p1_sign = input(f"Incorrect sign! Choose X or O: ").upper()
 
-    p2_sign = "X" if p1_sign == "O" else "0"
+    p2_sign = "X" if p1_sign == "O" else "O"
 
     player1["name"] = p1_name
     player1["sign"] = p1_sign
