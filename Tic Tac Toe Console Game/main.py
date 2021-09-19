@@ -34,19 +34,21 @@ def setup_game():
     player2["sign"] = p2_sign
 
     print(f"OK! Everything is set up. \n"
-          f"{p1_name} you are playing with {p1_sign}.\n"
-          f"{p2_name} you are plating with {p2_sign}.\n")
+          f"{p1_name}, you are playing with {p1_sign}.\n"
+          f"{p2_name}, you are plating with {p2_sign}.\n")
 
 
 def who_start_first():
     name = player1["name"]
-    p1_choice = int(input(f"{name}, press 1 for heads or 2 for tails: "))
+    p1_choice = int(input(f"Let's see who start first!\n"
+                          f"{name}, press 1 for heads or 2 for tails: "))
 
     # Check if number is valid.
     while p1_choice not in [0, 1]:
         p1_choice = int(input("Invalid number! \n"
                               "Press 1 for heads or 2 for tails"))
 
+    # It is decided on random with "randint".
     coin_flip = randint(1, 2)
     result = "Heads" if coin_flip == 1 else "Tails"
 
@@ -59,7 +61,7 @@ def who_start_first():
         player1["start"] = False
         player2["start"] = True
 
-    print(f"{result}! {name} start first!")
+    print(f"{result}! {name}, start first!")
 
 
 # This function will be called only in the "play" function.
@@ -124,7 +126,7 @@ def play(p1, p2):
     while turn_count < 10:
         name = current_player["name"]
 
-        num = input(f"{name} choose a free position from 1 to 9: ")
+        num = input(f"{name}, choose a free position from 1 to 9: ")
 
         # Check if input is number.
         if not num.isnumeric():
