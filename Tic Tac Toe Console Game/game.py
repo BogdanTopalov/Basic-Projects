@@ -123,7 +123,7 @@ def play(p1, p2):
     print_board(matrix)
 
     # Playing.
-    while turn_count < 10:
+    while turn_count < 9:
         name = current_player["name"]
 
         num = input(f"{name}, choose a free position from 1 to 9: ")
@@ -161,16 +161,20 @@ def play(p1, p2):
         # Show the board.
         print_board(matrix)
 
-        # Check for winner.
-        winner = check_for_winner(matrix, sign)
+        # Start checking for winner from the 5th turn,
+        # because this is the minimum turns needed to win.
+        if turn_count >= 5:
 
-        if winner:
-            print(f"Congratulations, {name}!\n"
-                  f"You won!")
-            exit(0)
-        else:
-            # Swap players for next turn.
-            current_player, next_player = next_player, current_player
+            # Check for winner.
+            winner = check_for_winner(matrix, sign)
+
+            if winner:
+                print(f"Congratulations, {name}!\n"
+                      f"You won!")
+                exit(0)
+
+        # Swap players for next turn.
+        current_player, next_player = next_player, current_player
 
     # This will be executed if the game is tie.
     print("It's a tie! Nobody win.")
