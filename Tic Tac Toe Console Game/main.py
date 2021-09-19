@@ -117,6 +117,9 @@ def play(p1, p2):
         current_player = p2
         next_player = p1
 
+    # Show the board.
+    print_board(matrix)
+
     # Playing.
     while turn_count < 10:
         name = current_player["name"]
