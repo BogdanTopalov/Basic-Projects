@@ -17,7 +17,13 @@ The code is compiled of:
 #### print_board()
 #### check_for_winner()
 #### play()
-#### start()        
+#### start()
 
-<br/>
+
+## Here is a little demo
+
+
 :smiley:
+
+
+![](../../../Downloads/ezgif.com-gif-maker.gif)
