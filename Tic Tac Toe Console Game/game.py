@@ -44,9 +44,9 @@ def who_start_first():
                           f"{name}, press 1 for heads or 2 for tails: "))
 
     # Check if number is valid.
-    while p1_choice not in [0, 1]:
+    while p1_choice not in [1, 2]:
         p1_choice = int(input("Invalid number! \n"
-                              "Press 1 for heads or 2 for tails"))
+                              "Press 1 for heads or 2 for tails: "))
 
     # It is decided on random with "randint".
     coin_flip = randint(1, 2)
