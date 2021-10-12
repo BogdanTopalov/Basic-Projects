@@ -24,8 +24,11 @@ class Person:
 
     @age.setter
     def age(self, value):
+        if type(value) != int:
+            raise ValueError('Age must be a number!')
+
         if value < 16:
-            raise ValueError('The person needs to be 16 or older '
+            raise ValueError('The person has to be 16 or older '
                              'to train in the gym!')
         self.__age = value
 
