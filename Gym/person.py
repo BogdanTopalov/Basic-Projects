@@ -29,5 +29,15 @@ class Person:
                              'to train in the gym!')
         self.__age = value
 
+    @property
+    def gender(self):
+        return self.__gender
+
+    @gender.setter
+    def gender(self, value):
+        if value.lower() not in ['male', 'female']:
+            raise ValueError('Invalid gender! Choose male or female.')
+        self.__gender = value
+
 
 # TODO add more props
