@@ -1,9 +1,10 @@
 class Person:
-    def __init__(self, name, age, gender, id_number):
+    def __init__(self, name, age, gender, has_clean_shoes):
         self.name = name
         self.age = age
         self.gender = gender
-        self.id_number = id_number
+        self.has_clean_shoes = has_clean_shoes
+        self.membership = False
 
     @property
     def name(self):
@@ -39,8 +40,15 @@ class Person:
     @gender.setter
     def gender(self, value):
         if value.lower() not in ['male', 'female']:
-            raise ValueError('Invalid gender! Choose male or female.')
+            raise ValueError("Person's gender has to be either male or female.")
         self.__gender = value
 
+    @property
+    def has_clean_shoes(self):
+        return self.__has_clean_shoes
 
-# TODO add more props
+    @has_clean_shoes.setter
+    def has_clean_shoes(self, value):
+        if type(value) != bool:
+            raise ValueError(f'has_clean_shoes is not a boolean.')
+        self.__has_clean_shoes = value
