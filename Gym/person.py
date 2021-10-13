@@ -39,7 +39,9 @@ class Person:
 
     @gender.setter
     def gender(self, value):
-        if value.lower() not in ['male', 'female']:
+        value = value.lower()
+
+        if value not in ['male', 'female']:
             raise ValueError("Person's gender has to be either male or female.")
         self.__gender = value
 
