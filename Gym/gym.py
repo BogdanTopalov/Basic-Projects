@@ -27,8 +27,20 @@ class Gym:
         # Add person instance in the list.
         self.currently_in.append(person)
 
-    def info(self):
-        return len(self.currently_in)
+    def status(self):
+        people_in = len(self.currently_in)
+        average_age = sum([p.age for p in self.currently_in]) / people_in
+        males = sum([1 for p in self.currently_in if p.gender == 'male'])
+        females = sum([1 for p in self.currently_in if p.gender == 'female'])
+
+        info = list()
+        info.append(f"{self.name}")
+        info.append(f"People inside the gym: {people_in}/{self.max_capacity}")
+        info.append(f"Their average age: {average_age}")
+        info.append(f"Females: {females}")
+        info.append(f"Males: {males}")
+
+        return "\n".join(info)
 
 
 #  membership
