@@ -27,7 +27,8 @@ class Gym:
         # Add person instance in the list.
         self.currently_in.append(person)
 
-    def activate_membership(self, person: Person):
+    @staticmethod
+    def activate_membership(person: Person):
         if person.membership:
             return f"{person.name}'s membership is already active."
 
