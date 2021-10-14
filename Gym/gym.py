@@ -27,6 +27,13 @@ class Gym:
         # Add person instance in the list.
         self.currently_in.append(person)
 
+    def activate_membership(self, person: Person):
+        if person.membership:
+            return f"{person.name}'s membership is already active."
+
+        person.membership = True
+        return f"{person.name}'s membership is now active."
+
     def status(self):
         people_in = len(self.currently_in)
         average_age = sum([p.age for p in self.currently_in]) / people_in
