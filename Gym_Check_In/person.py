@@ -49,5 +49,7 @@ class Person:
     @has_clean_shoes.setter
     def has_clean_shoes(self, value):
         if type(value) != bool:
-            raise ValueError(f'has_clean_shoes is not a boolean.')
+            raise ValueError('has_clean_shoes property can be either True or False.')
         self.__has_clean_shoes = value
+
+# TODO add membership property
