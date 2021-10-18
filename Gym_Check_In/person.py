@@ -12,11 +12,8 @@ class Person:
 
     @name.setter
     def name(self, value):
-        contain_numbers = any([ch.isdigit() for ch in value])
-
-        if len(value) < 2 and contain_numbers:
-            raise ValueError("Person's name must be at least 2 characters "
-                             "and can't contain numbers.")
+        if len(value) < 2:
+            raise ValueError("Person's name must be at least 2 characters long.")
         self.__name = value
 
     @property
