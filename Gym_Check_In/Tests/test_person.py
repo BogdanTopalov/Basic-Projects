@@ -54,6 +54,54 @@ class PersonTests(TestCase):
 
         self.assertEqual(expected_result, str(ve.exception))
 
+    def test_age_property_working_as_intended(self):
+        self.person.age = 33
+        self.assertEqual(33, self.person.age)
+
+    def test_gender_property_with_wrong_gender(self):
+        expected_result = "Person's gender has to be either male or female."
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.gender = 'giraffe'
+
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_gender_property_with_number(self):
+        expected_result = "Person's gender has to be either male or female."
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.gender = 1
+
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_gender_property_with_boolean(self):
+        expected_result = "Person's gender has to be either male or female."
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.gender = False
+
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_gender_property_working_as_intended(self):
+        self.person.gender = 'Female'
+        self.assertEqual('Female', self.person.gender)
+
+    def test_has_clean_shoes_property_with_string(self):
+        expected_result = 'has_clean_shoes property can be either True or False.'
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.has_clean_shoes = 'Yes'
+
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_has_clean_shoes_property_with_number(self):
+        expected_result = 'has_clean_shoes property can be either True or False.'
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.has_clean_shoes = 2
+
+        self.assertEqual(expected_result, str(ve.exception))
+
 
 if __name__ == '__main__':
     main()
