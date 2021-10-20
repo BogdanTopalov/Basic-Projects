@@ -36,6 +36,9 @@ class Person:
 
     @gender.setter
     def gender(self, value):
+        if type(value) != str:
+            raise ValueError('Gender value must be sting.')
+
         value = value.lower()
 
         if value not in ['male', 'female']:
@@ -58,6 +61,6 @@ class Person:
 
     @membership.setter
     def membership(self, value):
-        if value != bool:
+        if type(value) != bool:
             raise ValueError('Membership property must be boolean.')
         self.__membership = value
