@@ -52,4 +52,12 @@ class Person:
             raise ValueError('has_clean_shoes property can be either True or False.')
         self.__has_clean_shoes = value
 
-# TODO add membership property
+    @property
+    def membership(self):
+        return self.__membership
+
+    @membership.setter
+    def membership(self, value):
+        if value != bool:
+            raise ValueError('Membership property must be boolean.')
+        self.__membership = value
