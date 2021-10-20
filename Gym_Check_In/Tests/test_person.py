@@ -67,7 +67,7 @@ class PersonTests(TestCase):
         self.assertEqual(expected_result, str(ve.exception))
 
     def test_gender_property_with_number(self):
-        expected_result = "Person's gender has to be either male or female."
+        expected_result = 'Gender value must be sting.'
 
         with self.assertRaises(ValueError) as ve:
             self.person.gender = 1
@@ -75,7 +75,7 @@ class PersonTests(TestCase):
         self.assertEqual(expected_result, str(ve.exception))
 
     def test_gender_property_with_boolean(self):
-        expected_result = "Person's gender has to be either male or female."
+        expected_result = 'Gender value must be sting.'
 
         with self.assertRaises(ValueError) as ve:
             self.person.gender = False
@@ -84,7 +84,7 @@ class PersonTests(TestCase):
 
     def test_gender_property_working_as_intended(self):
         self.person.gender = 'Female'
-        self.assertEqual('Female', self.person.gender)
+        self.assertEqual('female', self.person.gender)
 
     def test_has_clean_shoes_property_with_string(self):
         expected_result = 'has_clean_shoes property can be either True or False.'
@@ -101,6 +101,28 @@ class PersonTests(TestCase):
             self.person.has_clean_shoes = 2
 
         self.assertEqual(expected_result, str(ve.exception))
+
+    def test_has_clean_shoes_property_working_as_intended(self):
+        self.person.has_clean_shoes = False
+        self.assertEqual(False, self.person.has_clean_shoes)
+
+    def test_membership_property_with_string(self):
+        expected_result = 'Membership property must be boolean.'
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.membership = 'Yes'
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_membership_property_with_number(self):
+        expected_result = 'Membership property must be boolean.'
+
+        with self.assertRaises(ValueError) as ve:
+            self.person.membership = 1
+        self.assertEqual(expected_result, str(ve.exception))
+
+    def test_membership_property_working_as_intended(self):
+        self.person.membership = True
+        self.assertEqual(True, self.person.membership)
 
 
 if __name__ == '__main__':
