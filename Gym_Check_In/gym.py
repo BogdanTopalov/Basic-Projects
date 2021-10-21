@@ -9,6 +9,11 @@ class Gym:
 
     def check_in(self, person: Person):
 
+        # Check if gym is full.
+        if len(self.currently_in) >= self.max_capacity:
+            return f"{self.gym_name} Gym is full at the moment. " \
+                   f"Try checking in later."
+
         # Check if person has active membership.
         if not person.membership:
             return f"{person.name}'s membership is not active. " \
@@ -18,11 +23,6 @@ class Gym:
         if not person.has_clean_shoes:
             return f"{person.name} doesn't have clean shoes. " \
                    f"In order to be checked in, {person.name} must have clean shoes."
-
-        # Check if gym is full.
-        if len(self.currently_in) >= self.max_capacity:
-            return f"{self.gym_name} Gym is full at the moment. " \
-                   f"Try checking in later."
 
         # Add person instance in the list.
         self.currently_in.append(person)
