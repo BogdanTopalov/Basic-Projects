@@ -12,12 +12,12 @@ class Gym:
         # Check if person has active membership.
         if not person.membership:
             return f"{person.name}'s membership is not active. " \
-                   f"Please active it before checking in."
+                   f"Please activate it before checking in."
 
         # Check if person has clean shoes.
         if not person.has_clean_shoes:
             return f"{person.name} doesn't have clean shoes. " \
-                   f"In order to be checked in, {person.name} needs to have clean shoes."
+                   f"In order to be checked in, {person.name} must have clean shoes."
 
         # Check if gym is full.
         if len(self.currently_in) >= self.max_capacity:
