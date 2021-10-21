@@ -26,6 +26,7 @@ class Gym:
 
         # Add person instance in the list.
         self.currently_in.append(person)
+        return f"{person.name} checked in successfully!"
 
     @staticmethod
     def activate_membership(person: Person):
