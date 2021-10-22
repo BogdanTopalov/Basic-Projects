@@ -49,7 +49,7 @@ class Gym:
             females = sum([1 for p in self.currently_in if p.gender == 'female'])
 
             info.append(f"People inside the gym: {people_in}/{self.max_capacity}")
-            info.append(f"Their average age: {average_age}")
+            info.append(f"Their average age: {average_age:.1f}")
             info.append(f"Females: {females}")
             info.append(f"Males: {males}")
 
