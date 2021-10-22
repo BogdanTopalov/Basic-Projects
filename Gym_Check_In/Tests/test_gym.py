@@ -44,6 +44,39 @@ class GymTests(TestCase):
         self.assertEqual(expected_result, self.gym.check_in(self.person))
         self.assertEqual([self.person], self.gym.currently_in)
 
+    def test_activate_membership_when_it_is_already_activated(self):
+        self.person.membership = True
+
+        self.assertEqual("Bogdan's membership is already active.",
+                         self.gym.activate_membership(self.person))
+
+    def test_activate_membership_working_as_intended(self):
+        self.person.membership = False
+
+        self.assertEqual("Bogdan's membership is now active.",
+                         self.gym.activate_membership(self.person))
+        self.assertEqual(True, self.person.membership)
+
+    def test_status_method_when_the_gym_is_empty(self):
+        expected_result = 'Muscle Power\n' \
+                          'There is no one inside at the moment.'
+        self.assertEqual(expected_result, self.gym.status())
+
+    def test_status_method_when_there_are_people_inside_the_gym(self):
+        person1 = Person('Maria', 21, 'female', True)
+        person2 = Person('George', 30, 'male', True)
+        person3 = Person('Natasha', 25, 'female', True)
+        person4 = Person('Ivan', 27, 'male', True)
+
+        self.gym.currently_in = [self.person, person1, person2, person3, person4]
+
+        expected_result = 'Muscle Power\n' \
+                          'People inside the gym: 5/100\n' \
+                          'Their average age: 25.2\n' \
+                          'Females: 2\n' \
+                          'Males: 3'
+        self.assertEqual(expected_result, self.gym.status())
+
 
 if __name__ == '__main__':
     main()
