@@ -37,16 +37,24 @@ class Gym:
         return f"{person.name}'s membership is now active."
 
     def status(self):
-        people_in = len(self.currently_in)
-        average_age = sum([p.age for p in self.currently_in]) / people_in
-        males = sum([1 for p in self.currently_in if p.gender == 'male'])
-        females = sum([1 for p in self.currently_in if p.gender == 'female'])
-
         info = list()
         info.append(f"{self.gym_name}")
-        info.append(f"People inside the gym: {people_in}/{self.max_capacity}")
-        info.append(f"Their average age: {average_age}")
-        info.append(f"Females: {females}")
-        info.append(f"Males: {males}")
+
+        # When there is at least one person in the gym.
+        if self.currently_in:
+
+            people_in = len(self.currently_in)
+            average_age = sum([p.age for p in self.currently_in]) / people_in
+            males = sum([1 for p in self.currently_in if p.gender == 'male'])
+            females = sum([1 for p in self.currently_in if p.gender == 'female'])
+
+            info.append(f"People inside the gym: {people_in}/{self.max_capacity}")
+            info.append(f"Their average age: {average_age}")
+            info.append(f"Females: {females}")
+            info.append(f"Males: {males}")
+
+        # When the gym is empty.
+        else:
+            info.append('There is no one inside at te moment.')
 
         return "\n".join(info)
