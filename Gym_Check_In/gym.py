@@ -55,6 +55,6 @@ class Gym:
 
         # When the gym is empty.
         else:
-            info.append('There is no one inside at te moment.')
+            info.append('There is no one inside at the moment.')
 
         return "\n".join(info)
