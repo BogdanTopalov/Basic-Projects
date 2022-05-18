@@ -5,4 +5,3 @@ Methods are pretty self-explanatory:
 #### .activate_membership
 #### .status
 \
-:smiley: 
