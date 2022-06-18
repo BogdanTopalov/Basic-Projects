@@ -4,5 +4,3 @@ Methods are pretty self-explanatory:
 #### .check_in
 #### .activate_membership
 #### .status
-\
-:smiley: 
